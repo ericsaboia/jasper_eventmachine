@@ -1,0 +1,29 @@
+== Build JasperReports and render it in any language!
+
+We build a JasperReport server using {EventMachine}[http://rubyeventmachine.com/], a lightweight {Ruby}[http://www.ruby-lang.org/en/] Project.
+
+In order to have access to Java inside Ruby, you need to use {JRuby}[http://jruby.org/] interpreter and install all Gems listed in Gemfile of this project.
+
+== Starting the server
+
+After you have installed JRuby and the necessary gems, just run:
+
+		ruby report_server.rb
+
+You will see a message "Reports Server running at port 8081" if everything worked as we expected.
+
+The server will run at 8081 port by default. You can easy change it inside report_server.rb:
+
+		40. EventMachine::start_server "127.0.0.1", 8081, ReportServer
+
+== Usage
+
+You need to pass a hash to the server, with that structure:
+
+{
+	:path => '', # Path to Jasper
+	:jasper => '', # Jasper name (without .jasper)
+	:xml => '', XML used as datasource by JasperReport
+	:xml_xpath => '',
+	:parametros => '' Optionaly, you can pass parameters that will be send to Jasper
+}
